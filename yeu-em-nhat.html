@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Bé có yêu anh hong?</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background-color: #fff0f5;
+      margin-top: 30px;
+    }
+
+    img {
+      width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      color: #ff3366;
+      margin-bottom: 40px;
+    }
+
+    #container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    button {
+      padding: 20px 40px;
+      font-size: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s, font-size 0.3s;
+    }
+
+    #yesBtn {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #cccccc;
+      color: black;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 24px;
+      color: #ff1493;
+      font-weight: bold;
+      animation: pop 0.4s ease-in-out;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    #popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    #popup img {
+      width: 300px;
+      border-radius: 20px;
+      border: 5px solid white;
+      box-shadow: 0 0 20px pink;
+      animation: zoomIn 0.5s ease;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    #popup:after {
+      content: "💖💖💖";
+      font-size: 50px;
+      position: absolute;
+      bottom: 50px;
+      animation: floatHearts 2s infinite;
+    }
+
+    @keyframes floatHearts {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-50px); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Cute Love">
+
+  <h1>Bé có yêu anh hong? 💌</h1>
+
+  <div id="container">
+    <button id="yesBtn">Yêu ❤️</button>
+    <button id="noBtn">Không yêu ❌</button>
+  </div>
+
+  <div id="message"></div>
+
+  <div id="popup" onclick="closePopup()">
+    <img src="40D83798-C26B-44F4-BBCD-EE34DE223536.jpeg" alt="Tụi mình">
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+    const popup = document.getElementById("popup");
+
+    let scale = 1;
+
+    yesBtn.onclick = () => {
+      message.innerText = "Anh biết màaaa 💖💖💖";
+      popup.style.display = "flex";
+    };
+
+    noBtn.onclick = () => {
+      scale += 0.1;
+      yesBtn.style.transform = `scale(${scale})`;
+
+      noBtn.style.transform = "translateX(-5px)";
+      setTimeout(() => noBtn.style.transform = "translateX(5px)", 100);
+      setTimeout(() => noBtn.style.transform = "translateX(0)", 200);
+    };
+
+    function closePopup() {
+      popup.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
